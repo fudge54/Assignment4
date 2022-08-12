@@ -27,7 +27,7 @@ public class MigrateTransactionsTable {
 				char type = raf.readChar();
 				double amount = raf.readDouble();
 				String date = raf.readUTF();
-				length = 8 + 1 + (Double.toString(amount).length()) + (date.length());
+				length = 8 + 2 + 8 + (date.length() + 2);
 				System.out.println("Inserting transaction to account: " + cardNum);
 				Transaction transaction = new Transaction(cardNum, type, amount, date);
 				driver.insertTransaction(transaction);
